@@ -31,7 +31,8 @@
       gs = "git status";
       rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config";
       cleanup = "sudo nix-collect-garbage --delete-older-than 14d";
-      cleanup-all = "sudo nix-collect-garbage -d";	
+      cleanup-all = "sudo nix-collect-garbage -d";
+      a-boost = "pamixer --allow-boost --set-volume 150";	
     };
   };
  
@@ -145,6 +146,9 @@
     enable = true;
     nix-direnv.enable = true;
   };
-
+  
+  programs.kitty = {
+    enable = true;
+  };
   home.stateVersion = "26.05";
 }
