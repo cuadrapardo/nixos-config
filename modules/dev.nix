@@ -6,5 +6,6 @@
     gcc
     gnumake
     neovim
+    jetbrains.clion
   ];
 }

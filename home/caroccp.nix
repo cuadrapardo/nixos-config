@@ -12,6 +12,8 @@
     fzf
     jq
     tree
+    audacious
+    libreoffice
   ];
 
   programs.git = {
@@ -28,6 +30,8 @@
       ll = "eza -la";
       gs = "git status";
       rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config";
+      cleanup = "sudo nix-collect-garbage --delete-older-than 14d";
+      cleanup-all = "sudo nix-collect-garbage -d";	
     };
   };
  
