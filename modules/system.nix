@@ -26,6 +26,7 @@
     curl
     htop
     unzip
+    pamixer
   ];
 
 
@@ -43,24 +44,38 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Select internationalisation properties.
-#    i18n.defaultLocale = "en_US.UTF-8";
-#    console = {
-#      font = "Lat2-Terminus16";
-#      keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
- #   };
 
   # Enable the X11 windowing system.
     services.xserver.enable = true;
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
 
-  
-
   # Configure keymap in X11
     services.xserver.xkb.layout = "us";
     services.xserver.xkb.options = "eurosign:e,caps:escape";
+#
+  # Audio
+  #
+  services.pulseaudio.enable = false; # Use Pipewire, the modern sound subsystem
+
+  security.rtkit.enable = true; # Enable RealtimeKit for audio purposes
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # Uncomment the following line if you want to use JACK applications
+    # jack.enable = true;
+  };
+
+  #
+  # Bluetooth
+  #
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
