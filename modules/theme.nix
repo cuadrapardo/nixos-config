@@ -22,5 +22,5 @@
     };
   };
 
-  stylix.opacity.terminal = 0.9;
+  stylix.opacity.terminal = 1.0;
 }
